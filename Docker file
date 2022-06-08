@@ -1,0 +1,13 @@
+FROM tomcat:latest
+
+RUN rmdir /usr/local/tomcat/webapps
+
+RUN mv /usr/local/tomcat/webapps.dist /usr/local/tomcat/webapps
+
+RUN rm /usr/local/tomcat/conf/server.xml
+
+COPY server.xml /usr/local/tomcat/conf/server.xml
+
+EXPOSE 80 8080
+
+CMD ["catalina.sh", "run"]
